@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>MintBean_0615</h1>
+        <h1>MintBean_0622</h1>
       </header>
     </div>
   );
