@@ -1,6 +1,6 @@
 {
   "name": "mint_bean_062220",
-  "homepage": "https://kmbarnett.github.io/mint_bean_07082020/",
+  "homepage": "https://exchange-mint-bean.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

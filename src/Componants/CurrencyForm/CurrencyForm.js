@@ -29,7 +29,6 @@ function CurrencyForm({ setSubmission }) {
   }
 
   const resetState = () => {
-    setCountries([])
     setDestination('')
     setAmount('')
     setBaseCurrency('')
