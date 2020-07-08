@@ -3,7 +3,6 @@ import './CurrencyDisplay.css';
 
 function CurrencyDisplay({ baseCur, toCur, amount, rates }) {
 const [conversion, setConversion] = useState('')
-console.log(conversion, baseCur, toCur, amount);
 
 
 

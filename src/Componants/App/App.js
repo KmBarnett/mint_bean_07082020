@@ -8,7 +8,6 @@ function App() {
   const [rates, setRates] = useState({})
 
   const submit = (submission) => {
-    console.log(submission);
     setSubmission(submission)
   }
 
