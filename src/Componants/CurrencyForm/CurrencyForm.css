@@ -1,0 +1,36 @@
+.CurrencyForm {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  width: 45%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(5px);
+  border: solid 2px black;
+  border-radius: 25px;
+  padding: 2%;
+  font-size: 1.25rem;
+}
+
+.CurrencyForm select,
+.CurrencyForm input {
+  background-color: white;
+  border: solid 2px black;
+  margin-left: 2%;
+  border-radius: 25px;
+  padding: 0.1rem 0.45rem;
+}
+
+.CurrencyForm label {
+  width: 100%;
+  text-align: center;
+}
+
+.CurrencyForm button {
+  font-size: 1.25rem;
+  border: solid 2px black;
+  border-radius: 25px;
+  padding: 0.1rem 0.45rem;
+  background-color: rgb(185, 255, 143);
+}

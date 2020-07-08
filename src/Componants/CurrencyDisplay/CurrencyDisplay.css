@@ -1,0 +1,13 @@
+.CurrencyDisplay {
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(5px);
+  border: solid 2px black;
+  margin-top: 10%;
+  width: 50%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}

@@ -48,6 +48,16 @@ function CurrencyForm({ setSubmission }) {
     }
   }
 
+  const validCur = () => {
+    if (validDestionation()) {
+      const { currencies } = countries.find(country => country.name === destination)
+      const codes = currencies.map(currency => currency.code)
+      const baseTrue = curCodes.includes(baseCurrency)
+      const toTrue = codes.includes(toCurrency)
+      return baseTrue && toTrue
+    }
+  }
+
   const validDestionation = () => {
     const destinations = countries.map(country => country.name)
     return destinations.includes(destination)
@@ -73,39 +83,38 @@ function CurrencyForm({ setSubmission }) {
     fetchCountries()
   },[])
 
-  useEffect(() => {
-
-  },[destination])
-
-  // useEffect(() => {
-  //   console.log(countries);
-  // },[countries])
-
+  const filled = destination && amount && toCurrency && baseCurrency;
+  const validInputs = validCur() && validDestionation();
   return (
     <form className="CurrencyForm">
-      <label htmlFor="countries-input">Destination:</label>
-      <input value={destination} onChange={(e) => setDestination(e.target.value)} placeholder='Destination' type='text' list="countries" name="countries" id="countries-input"/>
-      <datalist id="countries">
-        {createDestinationOptions()}
-      </datalist>
-      <label htmlFor="amount-input">Amount:</label>
-      <input placeholder='0' value={amount} onChange={(e) => setAmount(e.target.value)} type="number" id="amount-input" name="Amount"/>
-      <label htmlFor="currencies-input">From:</label>
-      <input value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)} placeholder='From' type='text' list="currencies" name="currencies" id="currencies-input"/>
-      <datalist id="currencies">
-        {createBaseCurOptions()}
-      </datalist>
-      <label htmlFor="exchangeCur">To:</label>
-      {validDestionation() ?
-        <select defaultValue='' value={toCurrency} onChange={e => setToCurrency(e.target.value)} name="exchangeCur" id="exchangeCur">
-          <option disabled value=''>Select Currency</option>
-          {createToCurOptions()}
-        </select> :
-        <select value='' disabled={true} name="exchangeCur" id="exchangeCur">
-          <option value=''>Select Currency</option>
-        </select>
-      }
-      <button type='button' onClick={e => handleSubmit(e)} name='submit'>Convert!</button>
+      <label htmlFor="countries-input">Destination:
+        <input value={destination} onChange={(e) => setDestination(e.target.value)} placeholder='Destination' type='text' list="countries" name="countries" id="countries-input"/>
+        <datalist id="countries">
+          {createDestinationOptions()}
+        </datalist>
+      </label>
+      <label htmlFor="amount-input">Amount:
+        <input placeholder='0' value={amount} onChange={(e) => setAmount(e.target.value)} type="number" id="amount-input" name="Amount"/>
+      </label>
+      <label htmlFor="currencies-input">From:
+        <input value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)} placeholder='From' type='text' list="currencies" name="currencies" id="currencies-input"/>
+        <datalist id="currencies">
+          {createBaseCurOptions()}
+          <option value={'More Comming Soon'}/>)
+          </datalist>
+      </label>
+      <label htmlFor="exchangeCur">To:
+        {validDestionation() ?
+          <select defaultValue='' value={toCurrency} onChange={e => setToCurrency(e.target.value)} name="exchangeCur" id="exchangeCur">
+            <option disabled value=''>Select Currency</option>
+            {createToCurOptions()}
+          </select> :
+          <select value='' disabled={true} name="exchangeCur" id="exchangeCur">
+            <option value=''>Select Currency</option>
+          </select>
+        }
+      </label>
+      <button disabled={!filled || !validInputs} type='button' onClick={e => handleSubmit(e)} name='submit'>Convert!</button>
     </form>
   );
 }
