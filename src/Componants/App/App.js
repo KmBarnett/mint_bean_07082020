@@ -1,14 +1,25 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import CurrencyForm from './../CurrencyForm/CurrencyForm.js'
+import CurrencyDisplay from './../CurrencyDisplay/CurrencyDisplay.js'
 import './App.css';
 
 function App() {
+  const [submited, setSubmitted] = useState(false)
+  const [submission, setSubmission] = useState({})
+
+  const submit = (submission) => {
+    setSubmitted(true)
+    setSubmission(submission)
+  }
+
   return (
-    <div className="App">
+    <section className="App">
       <header className="App-header">
-        <h1>MintBean_0622</h1>
+        <h1>Trip Currency Plan</h1>
       </header>
-    </div>
+      <CurrencyForm setSubmission={submit} />
+      {submited && <CurrencyDisplay {...submission} setSubmitted={setSubmitted} />}
+    </section>
   );
 }
 
